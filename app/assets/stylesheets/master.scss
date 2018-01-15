@@ -1,3 +1,5 @@
+
+$footer-height: 45px; 
 $main-blue: #337ab7;  
 $primary-font: 'Open Sans', sans-serif;  
 $secondary-font: 'Dosis', sans-serif;
@@ -11,14 +13,36 @@ html, body {
   font-family: $primary-font;
 }
 
-// .navbar-inverse {
-//   background-color: #fff;
-//   border-color: #090909;
-// }
-
 .navbar-default .navbar-brand {
   font-weight: 100; 
   font-size: 30px;
   letter-spacing: 2px;
   color: $main-blue;
+}
+
+
+/* Styles go here */
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -45px;
+  /* Pad bottom by footer height */
+  padding: 0 0 45px;
+}
+
+/* Set the fixed height of the footer here */
+.footer {
+  height: 45px;
 }

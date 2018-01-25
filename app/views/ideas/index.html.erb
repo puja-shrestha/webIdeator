@@ -21,19 +21,13 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+
       </div>
       <% end %>
     </div>
   </div>
 </div>
 
-<%= simple_form_for Idea.new do |f| %>
-  <%= f.input :description %>
-  <%= f.input :author %>
-  <%= f.submit 'Submit', class: 'btn btn-primary' %>
-<% end %>
-<div>
 
 <% @ideas.each do |idea| %>
   <div class="panel panel-default">
@@ -53,9 +47,3 @@
   </div>
 <% end %>
 
-<h1>This is my first app ever and I’m super excited to become a coder</h1>
-
-<% @ideas.each do |idea| %>
-  <h3><%= idea.description %></h3>
-  <h4><%= idea.author %></h4>
-<% end %>

@@ -1,1 +1,6 @@
 <h1>This is my first app ever and I’m super excited to become a coder</h1>
+
+<% @ideas.each do |idea| %>
+  <h3><%= idea.description %></h3>
+  <h4><%= idea.author %></h4>
+<% end %>

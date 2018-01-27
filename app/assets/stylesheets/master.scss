@@ -4,6 +4,14 @@ $main-blue: #337ab7;
 $primary-font: 'Open Sans', sans-serif;  
 $secondary-font: 'Dosis', sans-serif;
 
+.p0 {
+  padding: 0 !important;
+}
+
+.mt0 {
+  margin-top: 0 !important;
+}
+
 .navbar-default {
   font-family: $secondary-font;
   background-color: white;

@@ -1,3 +1,4 @@
 class Idea < ApplicationRecord 
-  validates :description, :author, presence: true
+  belongs_to :user
+  validates :description, :author, :user_id, presence: true
 end

@@ -1,52 +1,58 @@
 <div class="modal-body">
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Add Idea
-</button>
-
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <%= simple_form_for Idea.new do |f| %>
-      <div class="modal-body">
-        <%= simple_form_for Idea.new do |f| %>
-          <%= f.input :description %>
-          <%= f.input :author %>
-          <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <%= simple_form_for @idea do |f| %>
+        <div class="modal-body">
+          <%= simple_form_for @idea do |f| %>
+            <%= f.input :description %>
+            <%= f.input :author %>
+            <%= f.submit 'Submit', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
         <% end %>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
 
+  <% @ideas.each do |idea| %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="user-img">
+              <%= image_tag idea.user.photo %>
+            </div>
+            <%= link_to  idea.user.email, user_path(idea.user_id) %>
+          </div>
+        </div>
+        <blockquote>
+          <p><%= idea.description %></p>
+          <small>by <%= idea.author %></small>
+        </blockquote> 
+        <br>
+        <div class="btn-group" role="group">
+          <% if idea.user == current_user %>
+            <%= link_to 'Delete', idea_path(idea), method: :delete, class: 'btn btn-sm btn-danger', data: {confirm: "Are you sure?"} %>
+            <%= link_to 'Revise', edit_idea_path(idea), class: 'btn btn-sm btn-success' %>
+          <% end %>
+        </div>
       </div>
-      <% end %>
     </div>
+  <% end %>
+
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Add Idea
+  </button>
+
+  <div class= "text-center">
+    <%= will_paginate @posts %>
   </div>
-</div>
-
-
-<% @ideas.each do |idea| %>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <blockquote>
-        <p><%= idea.description %></p>
-        <small>by <%= idea.author %></small>
-      </blockquote> 
-      
-      <br>
-      <div class="btn-group" role="group">
-      <%= link_to 'Delete', idea_path(idea), method: :delete, class: 'btn btn-sm btn-danger', data: {confirm: "Are you sure?"} %>
-      <%= link_to 'Revise', edit_idea_path(idea), class: 'btn btn-sm btn-success' %>
-    </div>
-
-    </div>
-  </div>
-<% end %>
-
-<div class= "text-center">
-<%= will_paginate @posts %>
 </div>
